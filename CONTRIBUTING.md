@@ -67,7 +67,7 @@ All code changes:
 
 ### Naming Conventions
 
-- Use "TRS Platform" as the product name (not "Aurex" except in historical ADRs)
+- Use "TRS Platform" as the product name (not "Aurex")
 - Module names must exactly match the 16 modules in `docs/product/roadmap.md`
 
 ## Branching Strategy
