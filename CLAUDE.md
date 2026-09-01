@@ -17,7 +17,8 @@ Always read these documents before making any implementation changes:
 3. [`docs/product/product-map.md`](docs/product/product-map.md) — one-page mental model
 4. [`docs/architecture/system-architecture.md`](docs/architecture/system-architecture.md) — system design
 5. The relevant `docs/architecture/` document for the module you are working on
-6. The assigned Plane work item — the specific story or task
+6. [`docs/engineering/test-strategy.md`](docs/engineering/test-strategy.md) — testing strategy and quality standards
+7. The assigned Plane work item — the specific story or task
 
 ## Module Structure
 
