@@ -1,82 +1,70 @@
 # TRS Platform — Product Capabilities
 
+## Product & Architecture
+
+- Product vision and strategy
+- Architecture Decision Records (ADRs)
+- Technical standards and engineering rules
+- Module taxonomy and roadmap governance
+
 ## Platform Control Plane
 
-The control plane is the operational heart of TRS Platform. It provides:
-
-- Core REST and event-driven APIs
-- Orchestration and workflow execution
-- Multi-tenant request routing and enforcement
-- Audit logging and event streaming
-- Platform health and operational controls
+- Core platform APIs
+- Workflow orchestration
+- Audit and event stream
+- Operational management services
 
 ## Developer Portal
 
-Built on Backstage, the Developer Portal provides:
-
-- Software catalog (services, APIs, libraries, resources)
-- Self-service golden-path scaffolding
+- Backstage-based developer portal
+- Software catalog
+- Self-service scaffolding
+- Developer onboarding experience
 - TechDocs integration
-- Developer onboarding workflows
-- Plugin ecosystem
 
 ## Template Engine
 
-The Template Engine manages the lifecycle of reusable templates:
-
 - Template authoring and versioning
-- Scaffolding execution (Backstage Software Templates)
-- Template testing and validation
-- Template promotion and deprecation
-- Variable substitution and parameter schemas
+- Template execution lifecycle
+- Parameter schema validation
+- Composition and reuse of scaffolds
 
 ## Golden Paths
 
-Golden Paths are the opinionated, pre-built delivery paths that combine language, cloud, and runtime:
-
-- Golden Path framework and composition model
-- Language families: Java, Python, .NET, Node.js, Go
-- Cloud targets: Azure, AWS, GCP
-- Runtime targets: Kubernetes, OpenShift, serverless, containers
-- Path customisation and extension
-
-See [golden-path-roadmap.md](golden-path-roadmap.md) for the full matrix.
+- Language × Cloud × Runtime compositions
+- Platform-approved delivery patterns
+- Reusable service baselines
+- Embedded governance and quality gates
 
 ## Infrastructure Automation
 
-- Terraform modules for cloud provisioning
-- Ansible playbooks for configuration management
-- Environment management (dev, test, staging, production)
-- Cloud account and subscription management
-- Infrastructure testing and validation
+- Terraform modules
+- Ansible playbooks
+- Environment provisioning
+- Shared infrastructure abstractions
 
 ## CI/CD
 
-- GitHub Actions pipeline templates
-- Azure DevOps pipeline templates
-- Build, test, and deploy automation
-- Environment promotion workflows
-- Pipeline observability and reporting
+- Pipeline templates
+- Build, test, security, and deploy workflows
+- GitHub Actions and Azure DevOps integration
+- Release automation
 
 ## DevSecOps
 
-Security is embedded into every golden path:
-
-- SAST (Static Application Security Testing)
-- SCA (Software Composition Analysis)
+- Static Application Security Testing (SAST)
+- Software Composition Analysis (SCA)
 - Container image scanning
-- IaC security (Terraform, Helm)
-- Software supply chain security (SBOM, signing)
-- Secret scanning
-- Security gate policies
+- Infrastructure as Code security scanning
+- Supply-chain controls and attestations
 
 ## Security & Governance
 
-- Policy-as-code (OPA/Rego)
+- Policy-as-code
 - Approval workflows
 - Exception management
-- Compliance reporting (SOC 2, ISO 27001, CIS)
-- Risk register integration
+- Compliance reporting
+- Access control enforcement
 
 ## Observability
 
@@ -88,15 +76,13 @@ Security is embedded into every golden path:
 
 ## AI Platform Engineer
 
-TRS Platform embeds AI engineering agents throughout the delivery lifecycle:
+TRS Platform provides AI workflow orchestration throughout the delivery lifecycle:
 
-- Code generation from templates and specifications
-- Automated code review and quality analysis
-- Security remediation suggestions
-- Infrastructure code generation
-- Pipeline configuration generation
-- Documentation generation
-- AI-assisted debugging and incident response
+- Governed generation, review, and remediation workflows
+- Customer-managed AI provider and model integration
+- Context assembly from platform and repository sources
+- Tool integrations for code, infrastructure, pipeline, and documentation work
+- Audit, approvals, and policy enforcement for AI-assisted actions
 
 See [ai-platform-engineer.md](../architecture/ai-platform-engineer.md) for architecture details.
 
@@ -128,24 +114,19 @@ See [multi-tenancy.md](../architecture/multi-tenancy.md) for architecture detail
 
 - TechDocs (Backstage-native documentation)
 - Platform runbooks and operational guides
-- API documentation
-- Architecture documentation (this repository)
-- Onboarding guides
+- Architecture and ADR documentation
+- Onboarding and how-to guides
 
 ## Testing & Quality
 
-- Unit testing frameworks and standards
-- Integration testing
-- End-to-end platform testing
-- Golden-path validation suites
-- AI evaluation frameworks
-- Quality gates and coverage enforcement
+- Unit, integration, and end-to-end test strategy
+- Golden Path validation and conformance testing
+- Quality gates for pipelines and releases
+- AI workflow evaluations and acceptance criteria
 
 ## Cloud Native & Runtime
 
-- Kubernetes deployment abstractions
-- OpenShift support
-- Container best practices and standards
+- Kubernetes and OpenShift abstractions
+- Container standards and deployment conventions
 - Serverless runtime support
-- Runtime observability hooks
-- Multi-runtime platform APIs
+- Runtime portability across clouds

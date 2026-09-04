@@ -16,12 +16,14 @@ TRS Platform is organised into 16 core product modules. These modules represent 
 | 08 | **DevSecOps** | SAST, SCA, containers, IaC security, supply chain |
 | 09 | **Security & Governance** | Policy-as-code, approvals, exceptions, compliance |
 | 10 | **Observability** | Metrics, logs, traces, SLOs, monitoring |
-| 11 | **AI Platform Engineer** | AI agents, workflows, generation, review, remediation |
+| 11 | **AI Platform Engineer** | AI workflow orchestration for generation, review, remediation, and platform assistance |
 | 12 | **Enterprise & Multi-Tenancy** | Organisations, tenants, isolation, RBAC, enterprise controls |
 | 13 | **Commercialisation** | SaaS, licensing, plans, metering, billing, marketplace |
 | 14 | **Documentation** | TechDocs, platform documentation, runbooks, guides |
 | 15 | **Testing & Quality** | Unit, integration, E2E, platform validation, evaluations |
 | 16 | **Cloud Native & Runtime** | Kubernetes, OpenShift, containers, serverless, runtime abstractions |
+
+Module 11 follows a bring-your-own-AI (BYO-AI) model. Customers connect their own AI providers, models, subscriptions, and gateways; TRS Platform supplies workflow orchestration, guardrails, auditability, and platform integration rather than reselling model tokens.
 
 ## Delivery Waves
 
@@ -64,7 +66,7 @@ Azure Functions
 ```
 
 ### Wave 5+ — AWS and GCP
-Apply the same repeatable factory pattern across AWS and GCP.
+Apply the same repeatable factory pattern across AWS and GCP, reusing the same governance, observability, and customer-managed AI connectivity model.
 
 ## Sprint 0 — Architecture & Foundation
 

@@ -4,9 +4,11 @@ This file is read by Claude Code and other AI engineering agents before making a
 
 ## What is TRS Platform?
 
-TRS Platform is an Internal Developer Platform (IDP). It provides golden paths, AI-assisted engineering workflows, and fully automated DevSecOps pipelines.
+TRS Platform is an Internal Developer Platform (IDP). It provides developer experience capabilities, golden paths, AI-assisted engineering workflow orchestration, and fully automated DevSecOps pipelines.
 
 **The product is called TRS Platform.** Do not use "Aurex" as the product name.
+
+Customers bring their own AI providers, models, subscriptions, and gateway connectivity. TRS Platform orchestrates workflows and governance around those integrations and does not resell model tokens.
 
 ## Before You Start
 

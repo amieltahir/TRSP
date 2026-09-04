@@ -2,41 +2,30 @@
 
 ## Overview
 
-A Golden Path is a fully opinionated, pre-integrated delivery path that combines:
+A Golden Path is a composed delivery baseline that combines templates, infrastructure automation, CI/CD, DevSecOps, runtime configuration, observability, and optional AI workflow integration into a repeatable developer experience.
 
-- **Language** — the application programming language and runtime
-- **Cloud** — the target cloud provider
-- **Runtime** — the compute and container runtime
-- **DevSecOps** — embedded security gates
-- **CI/CD** — build and deploy automation
-- **Observability** — metrics, logs, and traces
-- **AI Workflow** — AI-assisted generation, review, and remediation
+## Golden Path Composition
 
-Golden Paths are the primary mechanism by which TRS Platform delivers value to developers.
+Each Golden Path is built from the following product modules:
 
-## Composition Model
-
-A Golden Path is composed from reusable, versioned modules:
-
-```
+```text
 Golden Path
-│
 ├── Template Module       (Template Engine)
+│   ├── Service template
 │   ├── Repository scaffold
-│   ├── Application skeleton
-│   └── Configuration files
+│   └── Backstage parameters
 │
 ├── Infrastructure Module (Infrastructure Automation)
-│   ├── Terraform: cloud resources
-│   ├── Terraform: networking
-│   └── Terraform: IAM
+│   ├── Terraform modules
+│   ├── Cloud resources
+│   └── Environment bootstrap
 │
 ├── Pipeline Module       (CI/CD)
 │   ├── Build pipeline
 │   ├── Test pipeline
 │   └── Deploy pipeline
 │
-├── Security Module       (DevSecOps)
+├── DevSecOps Module      (DevSecOps)
 │   ├── SAST gate
 │   ├── SCA gate
 │   ├── Container scan gate
@@ -51,15 +40,15 @@ Golden Path
 │   ├── Log configuration
 │   └── Trace configuration
 │
-└── AI Module             (AI Platform Engineer)
-    ├── Code review agent
-    ├── Security remediation agent
-    └── Documentation agent
+└── AI Workflow Module    (AI Platform Engineer)
+    ├── Review workflow
+    ├── Security remediation workflow
+    └── Documentation workflow
 ```
 
 ## Golden Path Lifecycle
 
-```
+```text
 DESIGN → IMPLEMENT → TEST → PROMOTE → MAINTAIN → DEPRECATE
 ```
 
@@ -88,20 +77,4 @@ From a developer's perspective, a Golden Path is a single Backstage Software Tem
 2. Choose "New Service" → select Golden Path (e.g. "Java on Azure Kubernetes")
 3. Provide service name, team, environment targets
 4. Platform creates: repository, CI/CD pipeline, infrastructure, Backstage catalog entry
-5. Developer clones repository and starts writing business logic
-
-The platform takes care of everything else.
-
-## Extending a Golden Path
-
-Teams may extend a Golden Path to add custom modules, but must not modify the platform-owned modules. Extension points are:
-
-- Custom Terraform modules (added to `infrastructure/custom/`)
-- Custom pipeline steps (added to designated extension points in the pipeline)
-- Custom Backstage plugins (registered via the Developer Portal)
-
-Extensions are subject to Security & Governance policy review.
-
-## Language × Cloud × Runtime Matrix
-
-See [golden-path-roadmap.md](../product/golden-path-roadmap.md) for the full matrix.
+5. Platform applies embedded security, runtime, observability, and optional AI workflow standards

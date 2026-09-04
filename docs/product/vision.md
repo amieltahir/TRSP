@@ -4,6 +4,8 @@
 
 TRS Platform is an Internal Developer Platform (IDP) that provides engineering teams with golden paths, AI-assisted workflows, and fully automated DevSecOps pipelines. It accelerates software delivery by removing toil, enforcing standards, and enabling self-service across every stage of the software lifecycle.
 
+Customers connect their own AI providers, models, subscriptions, and gateway endpoints. TRS Platform provides workflow orchestration, governance, and integration controls rather than reselling model tokens.
+
 ## Mission
 
 > Empower engineering teams to build, deploy, and operate secure, compliant, production-grade software at speed — through opinionated golden paths, intelligent automation, and a platform-first engineering model.
@@ -13,7 +15,7 @@ TRS Platform is an Internal Developer Platform (IDP) that provides engineering t
 1. **Platform as a Product** — TRS Platform is treated as a product with customers (developers), not as an internal IT service.
 2. **Golden Paths over Freedom** — We provide well-lit, paved roads. Developers can go off-path, but the platform makes the right way the easy way.
 3. **Security by Default** — DevSecOps is embedded, not bolted on. Every golden path includes security controls.
-4. **AI-Augmented Engineering** — AI agents assist with generation, review, and remediation throughout the pipeline.
+4. **AI-Augmented Engineering** — Governed AI workflows assist with generation, review, and remediation throughout the pipeline using customer-selected providers and models.
 5. **Multi-Tenancy First** — Tenant isolation and organisational hierarchy are first-class architecture concerns, not afterthoughts.
 6. **Commercialisation-Ready** — The platform is designed from the start to support product editions, feature entitlements, and usage metering.
 7. **Open Standards** — TRS Platform integrates with Backstage, Terraform, GitHub Actions, and other open-standard tools.
@@ -40,6 +42,6 @@ TRS Platform is an Internal Developer Platform (IDP) that provides engineering t
 
 1. **Developer Experience** — Reduce time-to-first-deployment for new developers and new services.
 2. **Security & Compliance** — Make compliance automatic, not manual.
-3. **AI-Assisted Delivery** — Use AI agents to accelerate every stage of the engineering lifecycle.
+3. **AI-Assisted Delivery** — Use AI workflows to accelerate the engineering lifecycle while keeping provider choice, credentials, and subscriptions under customer control.
 4. **Cloud Portability** — Azure first, then AWS and GCP, via the same golden-path abstractions.
 5. **Enterprise Readiness** — Multi-tenancy, commercialisation, and governance from day one.
