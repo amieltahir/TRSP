@@ -2,32 +2,64 @@
 
 This is the one-page mental model of TRS Platform. It captures every major capability domain and how they relate.
 
+## Canonical Module Order
+
+```
+01 Product & Architecture
+02 Platform Control Plane
+03 Developer Portal
+04 Template Engine
+05 Golden Paths
+06 Infrastructure Automation
+07 CI/CD
+08 DevSecOps
+09 Security & Governance
+10 Observability
+11 AI Platform Engineer
+12 Enterprise & Multi-Tenancy
+13 Commercialisation
+14 Documentation
+15 Testing & Quality
+16 Cloud Native & Runtime
+```
+
+## Capability Map
+
 ```
 TRS PLATFORM
 │
-├── Developer Experience
-│   └── Backstage (Developer Portal)
+├── Product & Architecture
+│   ├── Product vision
+│   ├── Architecture decision records
+│   └── Engineering standards
+│
+├── Platform Control Plane
+│   ├── Platform APIs
+│   ├── Orchestration
+│   ├── Workflow Engine
+│   └── Audit & Events
+│
+├── Developer Portal
+│   └── Backstage
 │       ├── Software Catalog
 │       ├── Self-Service Scaffolding
 │       ├── TechDocs
 │       └── Developer Onboarding
 │
-├── Platform
-│   └── Control Plane
-│       ├── Platform APIs
-│       ├── Orchestration
-│       ├── Workflow Engine
-│       └── Audit & Events
+├── Template Engine
+│   ├── Template Authoring
+│   ├── Template Versioning
+│   └── Scaffolding Execution
 │
 ├── Golden Paths
 │   ├── Languages (Java, Python, .NET, Node.js, Go)
 │   ├── Clouds (Azure, AWS, GCP)
 │   └── Runtimes (Kubernetes, OpenShift, Serverless, Containers)
 │
-├── Template Engine
-│   ├── Template Authoring
-│   ├── Template Versioning
-│   └── Scaffolding Execution
+├── Infrastructure Automation
+│   ├── Terraform Modules
+│   ├── Ansible Playbooks
+│   └── Environment Management
 │
 ├── CI/CD
 │   ├── GitHub Actions
@@ -41,10 +73,11 @@ TRS PLATFORM
 │   ├── IaC Security
 │   └── Supply Chain Security
 │
-├── Infrastructure Automation
-│   ├── Terraform Modules
-│   ├── Ansible Playbooks
-│   └── Environment Management
+├── Security & Governance
+│   ├── Policy-as-Code (OPA)
+│   ├── Approval Workflows
+│   ├── Exception Management
+│   └── Compliance Reporting
 │
 ├── Observability
 │   ├── Metrics & Dashboards
@@ -53,17 +86,11 @@ TRS PLATFORM
 │   └── SLO / SLA Management
 │
 ├── AI Platform Engineer
-│   ├── Code Generation
-│   ├── Automated Review
-│   ├── Security Remediation
-│   ├── Infrastructure Generation
-│   └── AI Workflow Integration
-│
-├── Security & Governance
-│   ├── Policy-as-Code (OPA)
-│   ├── Approval Workflows
-│   ├── Exception Management
-│   └── Compliance Reporting
+│   ├── AI Workflow Orchestration
+│   ├── BYO-AI Provider Integration
+│   ├── Tool-Assisted Generation / Review / Remediation
+│   ├── Context Assembly and Guardrails
+│   └── Audit and Approval Controls
 │
 ├── Enterprise & Multi-Tenancy
 │   ├── Organisation Hierarchy
@@ -80,17 +107,23 @@ TRS PLATFORM
 │   ├── Billing
 │   └── Marketplace
 │
-├── Cloud Native & Runtime
-│   ├── Kubernetes Abstractions
-│   ├── OpenShift Support
-│   ├── Serverless Runtime
-│   └── Container Standards
+├── Documentation
+│   ├── TechDocs
+│   ├── Architecture Docs (this repo)
+│   ├── Runbooks
+│   └── Onboarding Guides
 │
-└── Documentation
-    ├── TechDocs
-    ├── Architecture Docs (this repo)
-    ├── Runbooks
-    └── Onboarding Guides
+├── Testing & Quality
+│   ├── Unit and Integration Testing
+│   ├── End-to-End Validation
+│   ├── Golden Path Conformance
+│   └── AI Workflow Evaluations
+│
+└── Cloud Native & Runtime
+    ├── Kubernetes Abstractions
+    ├── OpenShift Support
+    ├── Serverless Runtime
+    └── Container Standards
 ```
 
 ## How It All Connects
@@ -98,19 +131,19 @@ TRS PLATFORM
 ```
                      ┌─────────────────────┐
                      │      BACKSTAGE      │
-                     │  Developer Portal    │
+                     │  Developer Portal   │
                      └──────────┬──────────┘
                                 │
                                 ▼
                 ┌───────────────────────────┐
-                │      TRS PLATFORM         │
+                │       TRS PLATFORM        │
                 │                           │
-                │    Platform Control Plane │
+                │   Platform Control Plane  │
                 └─────────────┬─────────────┘
                               │
          ┌────────────────────┼────────────────────┐
          ▼                    ▼                    ▼
-   Golden Paths          AI Engineer          DevSecOps
+   Golden Paths     AI Platform Engineer      DevSecOps
          │                    │                    │
          └────────────────────┼────────────────────┘
                               ▼
@@ -122,7 +155,7 @@ TRS PLATFORM
          │                    │                    │
          └────────────────────┼────────────────────┘
                               ▼
-                     Cloud Native Runtime
+                  Cloud Native & Runtime
                               │
                   K8s / OpenShift / Serverless
 
@@ -133,7 +166,11 @@ Across everything:
       └──────────────────────────────────┘
 
       ┌──────────────────────────────────┐
-      │         MULTI-TENANCY            │
+      │     ENTERPRISE & MULTI-TENANCY   │
+      └──────────────────────────────────┘
+
+      ┌──────────────────────────────────┐
+      │        TESTING & QUALITY         │
       └──────────────────────────────────┘
 
       ┌──────────────────────────────────┐

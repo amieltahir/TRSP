@@ -9,27 +9,27 @@ TRS Platform is an Internal Developer Platform composed of 16 product modules. T
 ```
                      ┌─────────────────────┐
                      │      BACKSTAGE      │
-                     │  Developer Portal    │
+                     │  Developer Portal   │
                      └──────────┬──────────┘
                                 │  REST / gRPC / Events
                                 ▼
                 ┌───────────────────────────┐
-                │      TRS PLATFORM         │
+                │       TRS PLATFORM        │
                 │                           │
-                │    Platform Control Plane │
-                │    ├── Platform APIs      │
-                │    ├── Orchestration      │
-                │    ├── Workflow Engine    │
-                │    └── Audit & Events     │
+                │   Platform Control Plane  │
+                │   ├── Platform APIs       │
+                │   ├── Orchestration       │
+                │   ├── Workflow Engine     │
+                │   └── Audit & Events      │
                 └─────────────┬─────────────┘
                               │
          ┌────────────────────┼────────────────────┐
          ▼                    ▼                    ▼
-   Golden Paths          AI Engineer          DevSecOps
-   ├── Templates         ├── Code Gen          ├── SAST
-   ├── Scaffolding        ├── Review           ├── SCA
-   └── Composition        ├── Remediation      ├── Container
-                          └── Workflow         └── IaC
+   Golden Paths     AI Platform Engineer      DevSecOps
+   ├── Templates    ├── Workflow Orchestration ├── SAST
+   ├── Scaffolding  ├── Policy & Context       ├── SCA
+   └── Composition  ├── BYO-AI Connectivity    ├── Container
+                    └── Approval Controls      └── IaC
          │                    │                    │
          └────────────────────┼────────────────────┘
                               ▼
@@ -44,27 +44,31 @@ TRS Platform is an Internal Developer Platform composed of 16 product modules. T
          │                    │                    │
          └────────────────────┼────────────────────┘
                               ▼
-                     Cloud Native Runtime
-                     ├── Kubernetes / AKS / EKS / GKE
-                     ├── OpenShift
-                     └── Serverless
+                  Cloud Native & Runtime
+                  ├── Kubernetes / AKS / EKS / GKE
+                  ├── OpenShift
+                  └── Serverless
 
 Cross-Cutting:
 ┌──────────────────────────────────────────────────────┐
-│                SECURITY & GOVERNANCE                  │
-│          Policy-as-Code · Approvals · Compliance      │
+│                SECURITY & GOVERNANCE                 │
+│          Policy-as-Code · Approvals · Compliance     │
 └──────────────────────────────────────────────────────┘
 ┌──────────────────────────────────────────────────────┐
-│               ENTERPRISE & MULTI-TENANCY              │
-│      Org · Tenant · RBAC · Isolation · Audit          │
+│             ENTERPRISE & MULTI-TENANCY               │
+│      Org · Tenant · RBAC · Isolation · Audit         │
 └──────────────────────────────────────────────────────┘
 ┌──────────────────────────────────────────────────────┐
-│                   COMMERCIALISATION                   │
-│     Editions · Entitlements · Metering · Billing      │
+│                 TESTING & QUALITY                    │
+│      Unit · Integration · E2E · Conformance          │
 └──────────────────────────────────────────────────────┘
 ┌──────────────────────────────────────────────────────┐
-│                   OBSERVABILITY                       │
-│        Metrics · Logs · Traces · SLOs                 │
+│                 COMMERCIALISATION                    │
+│     Editions · Entitlements · Metering · Billing     │
+└──────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                   OBSERVABILITY                      │
+│        Metrics · Logs · Traces · SLOs                │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -72,7 +76,7 @@ Cross-Cutting:
 
 ### Platform Control Plane
 
-The Control Plane is the operational core. All platform interactions (from the Developer Portal, from CI/CD, from AI agents) route through the Control Plane.
+The Control Plane is the operational core. All platform interactions (from the Developer Portal, from CI/CD, from AI workflows) route through the Control Plane.
 
 Responsibilities:
 - Expose authenticated, authorised platform APIs
@@ -124,7 +128,7 @@ Centralised observability stack: metrics (Prometheus/Azure Monitor), logs (Fluen
 
 ### AI Platform Engineer
 
-AI agents that operate throughout the delivery lifecycle. See [ai-platform-engineer.md](ai-platform-engineer.md).
+AI workflow orchestration capability that integrates customer-managed AI providers, models, and gateways into delivery workflows. See [ai-platform-engineer.md](ai-platform-engineer.md).
 
 ### Enterprise & Multi-Tenancy
 
@@ -149,7 +153,7 @@ Abstractions over Kubernetes, OpenShift, and serverless runtimes, enabling Golde
 | Container Orchestration | Kubernetes / OpenShift |
 | CI/CD | GitHub Actions / Azure DevOps |
 | Observability | OpenTelemetry, Prometheus, Grafana |
-| AI | LLM-backed agents (model TBD via ADR) |
+| AI | Customer-managed AI providers and models integrated through workflow orchestration (ADR TBD) |
 | API | REST + gRPC + CloudEvents |
 
 Key technology decisions are recorded as Architecture Decision Records in `docs/adr/`.

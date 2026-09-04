@@ -2,97 +2,115 @@
 
 ## Overview
 
-The AI Platform Engineer is Module 11 of TRS Platform. It embeds AI agents throughout the software delivery lifecycle, providing intelligent assistance at every stage — from code generation to security remediation to operational response.
+The AI Platform Engineer is Module 11 of TRS Platform. It provides AI workflow orchestration across the software delivery lifecycle so teams can embed assisted generation, review, remediation, and operational guidance into Golden Paths and platform operations.
+
+TRS Platform follows a bring-your-own-AI (BYO-AI) model. Customers use their own AI providers, models, subscriptions, and billing accounts. TRS Platform integrates those services into governed workflows and **does not resell model tokens or subscriptions**.
 
 ## Core Capabilities
 
 | Capability | Description |
 |-----------|-------------|
-| **Code Generation** | Generate application scaffolding, boilerplate, and implementation from specifications |
-| **Automated Code Review** | Analyse code for quality, security, and standards compliance |
-| **Security Remediation** | Identify and suggest fixes for security findings from DevSecOps scans |
-| **Infrastructure Generation** | Generate Terraform and Ansible from natural-language or structured specifications |
-| **Pipeline Generation** | Generate CI/CD pipeline configurations for new services |
-| **Documentation Generation** | Generate TechDocs, README files, API documentation |
-| **AI-Assisted Debugging** | Analyse logs, traces, and error patterns to suggest root-cause fixes |
-| **Incident Response** | Assist on-call engineers with incident triage and remediation steps |
+| **Workflow Orchestration** | Coordinate AI-assisted steps across code, infrastructure, pipeline, documentation, and operations workflows |
+| **Generation Assistance** | Support scaffold and implementation generation from approved templates and specifications |
+| **Automated Review** | Analyse code and configuration for quality, security, and standards compliance |
+| **Security Remediation Guidance** | Suggest fixes for findings raised by DevSecOps controls |
+| **Context Assembly** | Provide the relevant repository, architecture, and work-item context to approved workflows |
+| **Tool Integration** | Connect workflows to Git, CI/CD, infrastructure, documentation, and observability systems |
+| **Approval and Audit Controls** | Record actions, enforce approvals, and keep sensitive operations under human control |
 
-## Agent Architecture
+## BYO-AI Operating Model
 
-AI Platform Engineer agents operate as autonomous or semi-autonomous agents:
+The AI Platform Engineer capability is intentionally separate from model ownership:
+
+- **Customer-owned providers** — customers select the AI providers, models, and account structure that match their security, cost, and residency requirements.
+- **Customer-owned subscriptions and spend** — model billing remains with the customer; TRS Platform does not broker or resell tokens.
+- **Platform-owned orchestration** — TRS Platform owns workflow execution, context handling, policy checks, audit, and integration into Golden Paths.
+- **Policy-governed usage** — provider access, model eligibility, and workflow permissions are constrained by Security & Governance and Enterprise & Multi-Tenancy controls.
+
+## AI Workflow Architecture
 
 ```
                     PLATFORM CONTROL PLANE
                              │
-                    AI Orchestration Layer
+                    AI Workflow Orchestration
                              │
-         ┌───────────────────┼───────────────────┐
-         ▼                   ▼                   ▼
-   Generation Agent    Review Agent      Remediation Agent
-         │                   │                   │
-         ▼                   ▼                   ▼
-    LLM Backend         LLM Backend         LLM Backend
-         │                   │                   │
-         └───────────────────┼───────────────────┘
+         ┌───────────────────┼────────────────────┐
+         ▼                   ▼                    ▼
+  Context Assembly     Policy & Guardrails   Tool Integrations
+         │                   │                    │
+         │                   │                    ├── Git providers
+         │                   │                    ├── Developer Portal
+         │                   │                    ├── CI/CD pipelines
+         │                   │                    ├── Infrastructure tooling
+         │                   │                    ├── Security scanners
+         │                   │                    └── Observability stack
+         └───────────────────┼────────────────────┘
                              │
-                    Tool Integrations
-                    ├── GitHub API
-                    ├── Backstage API
-                    ├── Terraform
-                    ├── CI/CD pipelines
-                    ├── Security scanners
-                    └── Observability stack
+                  Customer AI Gateway / Provider Layer
+                             │
+         ┌───────────────────┼────────────────────┐
+         ▼                   ▼                    ▼
+    Provider A          Provider B           Provider C
+    Model Set           Model Set            Model Set
 ```
+
+This architecture keeps orchestration and governance inside TRS Platform while allowing provider choice and model routing to remain under customer control.
+
+## Customer Configuration Ownership
+
+Customers are responsible for configuring the AI connectivity used by their tenants and projects. TRS Platform should expose configuration and policy surfaces for:
+
+| Configuration Area | Ownership / Expectation |
+|--------------------|-------------------------|
+| **Provider endpoints** | Customer supplies the AI gateway or provider endpoints used by each tenant or project |
+| **Credentials** | Customer-managed credentials are stored in the platform secrets store and never hardcoded in templates or workflows |
+| **Model routing** | Customer administrators define approved model routing, fallback behaviour, and environment-specific choices |
+| **Allowlists / denylists** | Per-tenant and per-project policy controls determine which providers and models are allowed for which workflows |
+| **Usage policy** | Rate limits, cost controls, and data-handling rules are enforced according to customer policy |
+| **Auditability** | TRS Platform records workflow execution, provider selection, approval decisions, and relevant operational metadata |
 
 ## Context Model
 
-Agents are context-aware. Before acting, every agent reads:
+Before an AI workflow acts, it should assemble only the context required for the approved task:
 
 1. `CLAUDE.md` — engineering standards and agent instructions (repository root)
 2. `docs/product/roadmap.md` — product architecture and module definitions
-3. `docs/architecture/` — system architecture and component design
+3. Relevant `docs/architecture/` documents — system and module design
 4. `docs/adr/` — architecture decisions
 5. Assigned Plane work item — the specific task or story
-6. Repository code — existing implementation
+6. Repository code and configuration — existing implementation
 
-This ensures agents operate within the product architecture, not against it.
-
-## Engineering Agent Standards (Claude)
-
-When Claude Code or another AI coding agent operates on this repository, it must:
-
-1. Read `CLAUDE.md` before making any code changes
-2. Read the relevant architecture documents for the capability being implemented
-3. Implement only what is specified in the assigned Plane work item
-4. Follow the engineering standards in `docs/engineering/`
-5. Emit an ADR for any significant architecture decision
-6. Run tests and security scans before committing
+This keeps workflows aligned to product architecture, tenancy boundaries, and repository standards.
 
 ## AI Workflow Integration in Golden Paths
 
-Every Golden Path includes an AI Workflow integration point. This provides:
+Every Golden Path may include approved AI workflow integration points such as:
 
-- Automated code review on every pull request
-- Security finding analysis and remediation suggestions
-- Dependency upgrade recommendations
-- Test coverage analysis
+- Review assistance on pull requests
+- Security finding analysis and remediation guidance
+- Dependency and upgrade recommendations
+- Test coverage and quality feedback
+- Documentation drafting within platform guardrails
 
-## Governance
+The exact workflow set can vary by language, cloud, runtime, and tenant policy.
 
-AI agents operate within the Security & Governance framework:
+## Governance Constraints
 
-- All agent actions are audit-logged with full context
-- Agents cannot bypass RBAC or tenant isolation
-- Agent-generated code must pass the same DevSecOps gates as human-written code
-- Sensitive operations (production deployments, credential management) require human approval
-- AI context (prompts, completions) is stored per-tenant and subject to data retention policies
+AI-assisted workflows operate within the Security & Governance and Enterprise & Multi-Tenancy modules:
 
-## LLM Selection
+- All workflow actions are audit-logged with tenant, project, and actor context
+- Workflows cannot bypass RBAC, tenant isolation, or platform policy checks
+- Workflow-generated changes must pass the same DevSecOps and Testing & Quality gates as human-authored changes
+- Sensitive operations such as production deployments, credential management, and policy exceptions require human approval
+- Prompt, response, and execution records are retained according to tenant policy and data retention rules
 
-The choice of LLM backend for each agent type is governed by ADR. Criteria include:
+## Provider and Model Selection
 
-- Capability for the specific task type
-- Data residency requirements
-- Cost per token
-- Latency requirements
-- Security and privacy classification of input data
+Provider and model selection should be governed by ADR and customer policy. Selection criteria include:
+
+- Capability for the task type
+- Data residency and regulatory requirements
+- Cost, rate limits, and spend ownership
+- Latency and availability requirements
+- Security and privacy classification of the input data
+- Tenant- or project-specific allowlists and approval requirements
